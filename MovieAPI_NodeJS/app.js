@@ -9,7 +9,7 @@ const db = require('./helper/db.js')();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api/movie', movie);
+app.use('/api/movies', movie);
 app.get("/", (req, res) => {
     res.send("Successful !");
 });

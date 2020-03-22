@@ -1,0 +1,28 @@
+{
+    "name": "MovieAPI_NodeJS",
+    "version": "1.0.0",
+    "description": "Movie api wtih nodeJS",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "go": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mmezgin/MovieAPI_NodeJS.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mmezgin/MovieAPI_NodeJS/issues"
+    },
+    "homepage": "https://github.com/mmezgin/MovieAPI_NodeJS#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^5.9.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
+}

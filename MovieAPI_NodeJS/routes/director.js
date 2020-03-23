@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
     })
 });
 
-router.get('/', (req, res) => { //çokomelli function 
+router.get('/', (req, res) => { //çokomelli function //directörleri filmleriyle birlikte listeler
     const promise = Director.aggregate([{
             $lookup: {
                 from: 'movies',
@@ -60,7 +60,7 @@ router.get('/', (req, res) => { //çokomelli function
     });
 });
 ///////////////////////////
-router.get('/:director_id', (req, res) => { //çokomelli function 
+router.get('/:director_id', (req, res) => { //çokomelli function //directör id sinden aratıp onun filmlerini listeler
     const promise = Director.aggregate([{
             $match: {
                 '_id': mongoose.Types.ObjectId(req.params.director_id)
@@ -111,5 +111,34 @@ router.get('/:director_id', (req, res) => { //çokomelli function
 
     });
 });
+
+router.put("/:director_id", (req, res, next) => { //update director by id
+    const promise = Director.findByIdAndUpdate(req.params.director_id, req.body, { new: true });
+    promise.then((director) => {
+        if (!director)
+            next('The director you looking for is not found !'); //next ({message:'bulunamadı',code:99});
+        res.json(director);
+    }).catch((err) => {
+        res.json(err);
+    })
+});
+
+router.delete("/:director_id", (req, res, next) => { //delete director by id 
+    const promise = Director.findByIdAndRemove(req.params.director_id);
+    promise.then((director) => {
+        if (!director)
+            next('The director you looking for is not found !');
+        res.json(director);
+    }).catch((err) => {
+        res.json(err);
+    })
+});
+
+
+
+
+
+
+
 ////////////////////
 module.exports = router;
